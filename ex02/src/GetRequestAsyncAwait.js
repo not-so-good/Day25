@@ -1,17 +1,14 @@
 import React from "react";
-
 class GetRequestAsyncAwait extends React.Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = { totalReactPackages: null };
   }
-
-   componentDidMount() {
-    const response = await fetch("api.npms.io/v2/search?q=react")
+  async componentDidMount() {
+    const response = await fetch("https://api.npms.io/v2/search?q=react");
     const data = await response.json();
     this.setState({ totalReactPackages: data.total });
   }
-
   render() {
     const { totalReactPackages } = this.state;
     return (
@@ -22,5 +19,4 @@ class GetRequestAsyncAwait extends React.Component {
     );
   }
 }
-
 export default GetRequestAsyncAwait;
